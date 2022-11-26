@@ -71,7 +71,7 @@ public struct CalendarView: View {
                 scheduleTime
                 ForEach(0..<7) { _ in
                     VStack(alignment: .center, spacing: 1) {
-                        ForEach(1..<24) { _ in Color.red }
+                        ForEach(1..<24) { _ in Color.blue }
                     }
                 }
             }
@@ -93,7 +93,7 @@ public struct CalendarView: View {
             GridRow {
                 scheduleTime
                 VStack(alignment: .center, spacing: 1) {
-                    ForEach(1..<24) { _ in Color.red }
+                    ForEach(1..<24) { _ in Color.blue }
                 }
             }
         }
@@ -120,8 +120,11 @@ struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             CalendarView(type: .month)
+                .previewDisplayName("month calendar")
             CalendarView(type: .week)
+                .previewDisplayName("week calendar")
             CalendarView(type: .day)
+                .previewDisplayName("day calendar")
         }
     }
 }
