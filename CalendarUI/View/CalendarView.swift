@@ -29,29 +29,98 @@ public struct CalendarView: View {
                 // ForEach(["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]) {
                 ForEach(["日", "月", "火", "水", "木", "金", "土"], id: \.self) {
                     Text($0)
+                        .font(.caption)
+                        .foregroundColor(Color(.white))
+                        .padding(.bottom, 4)
                 }
             }
             GridRow {
                 // TODO: 現在の月の1日の曜日から逆算して空白を入れる
-                ForEach(0..<7) { _ in Color.red }
+                ForEach(0..<7) { _ in
+                    VStack {
+                        Text("1")
+                            .font(.caption)
+                            .foregroundColor(Color(.white))
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 4)
+                }
             }
+            .background(Color(.darkGray))
+            
             GridRow {
-                ForEach(0..<7) { _ in Color.green }
+                ForEach(0..<7) { _ in
+                    VStack {
+                        Text("8")
+                            .font(.caption)
+                            .foregroundColor(Color(.white))
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 4)
+                }
             }
+            .background(Color(.darkGray))
+            
             GridRow {
-                ForEach(0..<7) { _ in Color.blue }
+                ForEach(0..<7) { _ in
+                    VStack {
+                        Text("10")
+                            .font(.caption)
+                            .foregroundColor(Color(.white))
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 4)
+                }
             }
+            .background(Color(.darkGray))
+            
             GridRow {
-                ForEach(0..<7) { _ in Color.red }
+                ForEach(0..<7) { _ in
+                    VStack {
+                        Text("17")
+                            .font(.caption)
+                            .foregroundColor(Color(.white))
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 4)
+                }
             }
+            .background(Color(.darkGray))
+            
             GridRow {
-                ForEach(0..<7) { _ in Color.green }
+                ForEach(0..<7) { _ in
+                    VStack {
+                        Text("23")
+                            .font(.caption)
+                            .foregroundColor(Color(.white))
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 4)
+                }
             }
+            .background(Color(.darkGray))
+            
             GridRow {
                 // TODO: 現在の月の末尾の曜日から逆算して空白を入れる
-                ForEach(0..<7) { _ in Color.blue }
+                ForEach(0..<7) { _ in
+                    VStack {
+                        Text("30")
+                            .font(.caption)
+                            .foregroundColor(Color(.white))
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 4)
+                }
             }
+            .background(Color(.darkGray))
         }
+        .background(Color(.gray))
     }
 
     private var weekView: some View {
