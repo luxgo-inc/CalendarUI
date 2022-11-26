@@ -59,6 +59,7 @@ public struct CalendarView: View {
             GridRow {
                 // TODO: 今日の曜日はハイライト
                 // ForEach(["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]) {
+                Spacer()
                 ForEach(["日", "月", "火", "水", "木", "金", "土"], id: \.self) { dayOf in
                     VStack {
                         Text(dayOf)
@@ -68,9 +69,14 @@ public struct CalendarView: View {
             }
             GridRow {
                 scheduleTime
-                ForEach(0..<7) { _ in Color.red }
+                ForEach(0..<7) { _ in
+                    VStack(alignment: .center, spacing: 1) {
+                        ForEach(1..<24) { _ in Color.red }
+                    }
+                }
             }
         }
+        .padding(.leading, 6)
     }
 
     private var dayView: some View {
@@ -86,15 +92,25 @@ public struct CalendarView: View {
             }
             GridRow {
                 scheduleTime
-                ForEach(0..<1) { _ in Color.red }
+                VStack(alignment: .center, spacing: 1) {
+                    ForEach(1..<24) { _ in Color.red }
+                }
             }
         }
+        .padding(.leading, 6)
     }
 
     private var scheduleTime: some View {
-        VStack {
-            ForEach(0..<23) {
-                Text("\($0):00")
+        // TODO: set space size
+        VStack(alignment: .center, spacing: 1) {
+            ForEach(1..<24) { hour in
+                VStack {
+                    Spacer()
+                    Text("\(hour):00")
+                        .font(.caption)
+                        .padding(.init(top: 0, leading: 2, bottom: -8, trailing: 2))
+                }
+                .frame(height: .infinity)
             }
         }
     }
