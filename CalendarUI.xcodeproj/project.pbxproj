@@ -17,6 +17,7 @@
 		2400490E292FB0E900A0C8D9 /* CalendarUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 2400490B292FB0E900A0C8D9 /* CalendarUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		24004911292FB0E900A0C8D9 /* CalendarUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24004909292FB0E900A0C8D9 /* CalendarUI.framework */; };
 		24004912292FB0E900A0C8D9 /* CalendarUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24004909292FB0E900A0C8D9 /* CalendarUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		240049182931F1D800A0C8D9 /* DisplayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240049172931F1D800A0C8D9 /* DisplayType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		24004909292FB0E900A0C8D9 /* CalendarUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CalendarUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2400490B292FB0E900A0C8D9 /* CalendarUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarUI.h; sourceTree = "<group>"; };
 		2400490C292FB0E900A0C8D9 /* CalendarUI.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = CalendarUI.docc; sourceTree = "<group>"; };
+		240049172931F1D800A0C8D9 /* DisplayType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			children = (
 				2400490B292FB0E900A0C8D9 /* CalendarUI.h */,
 				2400490C292FB0E900A0C8D9 /* CalendarUI.docc */,
+				240049172931F1D800A0C8D9 /* DisplayType.swift */,
 			);
 			path = CalendarUI;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				240049182931F1D800A0C8D9 /* DisplayType.swift in Sources */,
 				2400490D292FB0E900A0C8D9 /* CalendarUI.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,6 +382,7 @@
 		24004902292FAFE400A0C8D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -406,6 +411,7 @@
 		24004903292FAFE400A0C8D9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
