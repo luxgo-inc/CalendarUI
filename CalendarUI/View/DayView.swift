@@ -8,17 +8,26 @@
 import SwiftUI
 
 struct DayView: View {
+    @State private var day: Day
+
+    init(day: Day) {
+        self.day = day
+    }
+
     var body: some View {
         Grid(alignment: .center, horizontalSpacing: 1, verticalSpacing: 1) {
             GridRow {
                 // TODO: 今日の曜日はハイライト
                 VStack {
-                    Text("水")
+                    Text(day.dayOf)
+                        .font(.subheadline)
                         .foregroundColor(Color(.white))
-                    Text("12")
+                    Text(day.dd)
+                        .font(.subheadline)
                         .foregroundColor(Color(.white))
                 }
                 Text("予定はありません")
+                    .font(.subheadline)
                     .foregroundColor(Color(.white))
 
             }
@@ -42,6 +51,6 @@ struct DayView: View {
 
 struct DayView_Previews: PreviewProvider {
     static var previews: some View {
-        DayView()
+        DayView(day: .init(dd: "12", dayOf: "水"))
     }
 }
