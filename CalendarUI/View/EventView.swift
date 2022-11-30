@@ -13,11 +13,12 @@ struct EventView: View {
             print("on tap event")
         }
         .foregroundColor(Color(.systemYellow))
-        .font(.caption2)
+        .lineLimit(1)
+        .font(.system(size: 8))
         .padding(2)
         .overlay(
             RoundedRectangle(cornerRadius: 4)
-                .stroke(Color(.systemYellow), lineWidth: 1.5)
+                .stroke(Color(.systemYellow), lineWidth: 2)
         )
         .background(Color(.darkGray))
         .cornerRadius(4)

@@ -37,11 +37,16 @@ struct WeekView: View {
             GridRow {
                 ScheduleTimeView()
                 ForEach(0..<7) { _ in
-                    VStack(alignment: .center, spacing: 1) {
-                        ForEach(0..<24) { _ in
-                            Rectangle()
-                                .foregroundColor(Color(.darkGray))
+                    ZStack(alignment: .topLeading) {
+                        VStack(alignment: .center, spacing: 1) {
+                            ForEach(0..<24) { _ in
+                                Rectangle()
+                                    .foregroundColor(Color(.darkGray))
+                            }
                         }
+
+                        EventView()
+                            .frame(maxWidth: .infinity)
                     }
                 }
                 .ignoresSafeArea(edges: [.bottom])
