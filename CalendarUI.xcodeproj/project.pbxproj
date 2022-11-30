@@ -19,6 +19,10 @@
 		24004912292FB0E900A0C8D9 /* CalendarUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24004909292FB0E900A0C8D9 /* CalendarUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		240049182931F1D800A0C8D9 /* DisplayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240049172931F1D800A0C8D9 /* DisplayType.swift */; };
 		2400491B2931F30200A0C8D9 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2400491A2931F30200A0C8D9 /* CalendarView.swift */; };
+		496DD19429373C3400198379 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496DD19329373C3400198379 /* DayView.swift */; };
+		496DD19629373C4300198379 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496DD19529373C4300198379 /* WeekView.swift */; };
+		496DD19829373C4B00198379 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496DD19729373C4B00198379 /* MonthView.swift */; };
+		496DD19A29373C7C00198379 /* ScheduleTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496DD19929373C7C00198379 /* ScheduleTimeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,10 @@
 		2400490C292FB0E900A0C8D9 /* CalendarUI.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = CalendarUI.docc; sourceTree = "<group>"; };
 		240049172931F1D800A0C8D9 /* DisplayType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayType.swift; sourceTree = "<group>"; };
 		2400491A2931F30200A0C8D9 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		496DD19329373C3400198379 /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		496DD19529373C4300198379 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
+		496DD19729373C4B00198379 /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
+		496DD19929373C7C00198379 /* ScheduleTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTimeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +141,10 @@
 			isa = PBXGroup;
 			children = (
 				2400491A2931F30200A0C8D9 /* CalendarView.swift */,
+				496DD19329373C3400198379 /* DayView.swift */,
+				496DD19529373C4300198379 /* WeekView.swift */,
+				496DD19729373C4B00198379 /* MonthView.swift */,
+				496DD19929373C7C00198379 /* ScheduleTimeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -261,6 +273,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				240049182931F1D800A0C8D9 /* DisplayType.swift in Sources */,
+				496DD19829373C4B00198379 /* MonthView.swift in Sources */,
+				496DD19A29373C7C00198379 /* ScheduleTimeView.swift in Sources */,
+				496DD19629373C4300198379 /* WeekView.swift in Sources */,
+				496DD19429373C3400198379 /* DayView.swift in Sources */,
 				2400490D292FB0E900A0C8D9 /* CalendarUI.docc in Sources */,
 				2400491B2931F30200A0C8D9 /* CalendarView.swift in Sources */,
 			);
