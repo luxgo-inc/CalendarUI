@@ -45,10 +45,9 @@ struct WeekView: View {
                             }
                         }
 
-                        EventView()
+                        EventView(event: .init(title: "レッスンの予定", date: Date(), allDay: false))
                             .frame(maxWidth: .infinity)
-                    }
-                }
+                    } }
                 .ignoresSafeArea(edges: [.bottom])
             }
             .background(Color(.gray))

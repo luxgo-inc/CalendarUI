@@ -26,6 +26,7 @@
 		496DD19D2937403900198379 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496DD19C2937403900198379 /* Day.swift */; };
 		496DD19F2937404200198379 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496DD19E2937404200198379 /* Week.swift */; };
 		496DD1A1293744F800198379 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496DD1A0293744F800198379 /* EventView.swift */; };
+		496DD1A329374D4900198379 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496DD1A229374D4900198379 /* Event.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		496DD19C2937403900198379 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		496DD19E2937404200198379 /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		496DD1A0293744F800198379 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
+		496DD1A229374D4900198379 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			children = (
 				496DD19C2937403900198379 /* Day.swift */,
 				496DD19E2937404200198379 /* Week.swift */,
+				496DD1A229374D4900198379 /* Event.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				240049182931F1D800A0C8D9 /* DisplayType.swift in Sources */,
+				496DD1A329374D4900198379 /* Event.swift in Sources */,
 				496DD19829373C4B00198379 /* MonthView.swift in Sources */,
 				496DD19D2937403900198379 /* Day.swift in Sources */,
 				496DD19A29373C7C00198379 /* ScheduleTimeView.swift in Sources */,
