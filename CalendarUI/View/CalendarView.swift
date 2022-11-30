@@ -132,20 +132,30 @@ public struct CalendarView: View {
                 ForEach(["日", "月", "火", "水", "木", "金", "土"], id: \.self) { dayOf in
                     VStack {
                         Text(dayOf)
+                            .foregroundColor(Color(.white))
+
                         Text("12")
+                            .foregroundColor(Color(.white))
                     }
+                    .foregroundColor(Color(.darkGray))
                 }
             }
+
             GridRow {
                 scheduleTime
                 ForEach(0..<7) { _ in
                     VStack(alignment: .center, spacing: 1) {
-                        ForEach(1..<24) { _ in Color.blue }
+                        ForEach(1..<24) { _ in
+                            Rectangle()
+                                .foregroundColor(Color(.darkGray))
+                        }
                     }
                 }
+                .ignoresSafeArea(edges: [.bottom])
             }
+            .background(Color(.gray))
         }
-        .padding(.leading, 6)
+        .background(Color(.gray))
     }
 
     private var dayView: some View {
@@ -154,19 +164,29 @@ public struct CalendarView: View {
                 // TODO: 今日の曜日はハイライト
                 VStack {
                     Text("水")
+                        .foregroundColor(Color(.white))
                     Text("12")
+                        .foregroundColor(Color(.white))
                 }
                 Text("予定はありません")
+                    .foregroundColor(Color(.white))
 
             }
+            .background(Color(.gray))
+
             GridRow {
                 scheduleTime
                 VStack(alignment: .center, spacing: 1) {
-                    ForEach(1..<24) { _ in Color.blue }
+                    ForEach(1..<24) { _ in
+                        Rectangle()
+                            .foregroundColor(Color(.darkGray))
+                    }
                 }
+                .ignoresSafeArea(edges: [.bottom])
             }
+            .background(Color(.gray))
         }
-        .padding(.leading, 6)
+        .background(Color(.gray))
     }
 
     private var scheduleTime: some View {
@@ -176,12 +196,15 @@ public struct CalendarView: View {
                 VStack {
                     Spacer()
                     Text("\(hour):00")
-                        .font(.caption)
+                        .font(.caption2)
+                        .foregroundColor(Color(.white))
                         .padding(.init(top: 0, leading: 2, bottom: -8, trailing: 2))
                 }
                 .frame(height: .infinity)
             }
         }
+        .padding(.leading, 6)
+        .background(Color(.darkGray))
     }
 }
 
