@@ -48,6 +48,9 @@ struct EventView: View {
 
 struct EventView_Previews: PreviewProvider {
     static var previews: some View {
-        EventView(event: .init(title: "レッスンの予定", date: Date(), allDay: false))
+        EventView(event: .init(title: "レッスンの予定",
+                               startTime: Date(),
+                               endTime: Date(timeInterval: 60*60*1, since: .now),
+                               allDay: false))
     }
 }

@@ -45,7 +45,21 @@ struct WeekView: View {
                             }
                         }
 
-                        EventView(event: .init(title: "レッスンの予定", date: Date(), allDay: false))
+                        // Part1
+                        // TODO: DayEventScheduleViewを作る
+                        // TODO: VStackで1日分の予定を列で表示
+                        // TODO: まずは、設定された時間に対しての高さを表示するEventViewを実装する
+                        
+                        
+                        // イベントサイズにおけるロジック
+                        // TODO: width   -> full width / かぶっている数（0の場合はfull）
+                        // TODO: height  -> full height / (time / 24)
+                        // TODO: point X -> かぶっているイベント間でstartを比較して、width分ズラす
+                        // TODO: point Y -> 時間軸を座標に変換し、(start time / 24) x full height
+                        EventView(event: .init(title: "レッスンの予定",
+                               startTime: Date(),
+                               endTime: Date(timeInterval: 60*60*1, since: .now),
+                               allDay: false))
                             .frame(maxWidth: .infinity)
                     } }
                 .ignoresSafeArea(edges: [.bottom])
