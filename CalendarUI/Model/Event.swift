@@ -31,7 +31,7 @@ extension Event {
         
         // 2. start(base) > start(target) -> start(base) > end(target) == かぶっている
         if startTime > targetEvent.startTime {
-            return startTime > targetEvent.endTime
+            return startTime < targetEvent.endTime
         }
         
         // 3. start(base) == start(target) -> かぶっている

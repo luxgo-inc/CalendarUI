@@ -29,7 +29,7 @@ struct DayEventScheduleView: View {
     }
     
     private mutating func checkConflictEvent() {
-        for var (idx, event) in events.enumerated() {
+        for (idx, event) in events.enumerated() {
             self.events[idx].conflictEvents = events.filter { $0 != event && event.isConflict(targetEvent: $0) }
         }
     }
@@ -41,7 +41,7 @@ struct DayEventScheduleView_Previews: PreviewProvider {
         /// 2022/12/10 9:30 〜 10:30 の日時を生成
         let event1StartTime = calendar.date(from: DateComponents(year: 2022, month: 12, day: 10, hour: 9, minute: 30, second: 0))!
         let event1EndTime = calendar.date(from: DateComponents(year: 2022, month: 12, day: 10, hour: 10, minute: 30, second: 0))!
-        let event1: Event = .init(title: "イベント1aaa", startTime: event1StartTime, endTime: event1EndTime, allDay: false)
+        let event1: Event = .init(title: "イベント1", startTime: event1StartTime, endTime: event1EndTime, allDay: false)
         
         /// 2022/12/10 10:00 〜 10:30 の日時を生成
         let event2StartTime = calendar.date(from: DateComponents(year: 2022, month: 12, day: 10, hour: 10, minute: 0, second: 0))!
