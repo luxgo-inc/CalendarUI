@@ -59,7 +59,7 @@ struct WeekView: View {
                         EventView(event: .init(title: "レッスンの予定",
                                startTime: Date(),
                                endTime: Date(timeInterval: 60*60*1, since: .now),
-                               allDay: false))
+                               allDay: false), width: 40, height: 100)
                             .frame(maxWidth: .infinity)
                     } }
                 .ignoresSafeArea(edges: [.bottom])
