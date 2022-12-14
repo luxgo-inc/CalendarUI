@@ -9,7 +9,7 @@ import XCTest
 @testable import CalendarUI
 
 final class EventTests: XCTestCase {
-    let calendar = Calendar(identifier: .japanese)
+    let calendar = Calendar(identifier: .gregorian)
     var event1: Event!
     var event2: Event!
     var event3: Event!
@@ -35,6 +35,11 @@ final class EventTests: XCTestCase {
         let event4StartTime = calendar.date(from: DateComponents(year: 2022, month: 12, day: 10, hour: 10, minute: 30, second: 0))!
         let event4EndTime = calendar.date(from: DateComponents(year: 2022, month: 12, day: 10, hour: 12, minute: 0, second: 0))!
         event4 = .init(title: "イベント4", startTime: event4StartTime, endTime: event4EndTime, allDay: false)
+        
+//        event1.conflictEvents = [event2, event3]
+//        event2.conflictEvents = [event1, event3]
+//        event3.conflictEvents = [event1, event2, event4]
+//        event4.conflictEvents = [event3]
     }
 
     func testScheduledTime() throws {
@@ -71,6 +76,31 @@ final class EventTests: XCTestCase {
         XCTAssertEqual(event2.positionY, 0.42)
         XCTAssertEqual(event3.positionY, 0.42)
         XCTAssertEqual(event4.positionY, 0.44)
+    }
+    
+    func testMaxConflictCount() throws {
+        event1.conflictEvents = [event2, event3]
+        event2.conflictEvents = [event1, event3]
+        event3.conflictEvents = [event1, event2, event4]
+        event4.conflictEvents = [event3]
+        
+        XCTAssertEqual(event1.maxConflictCount, 3)
+        XCTAssertEqual(event2.maxConflictCount, 3)
+        XCTAssertEqual(event3.maxConflictCount, 3)
+        XCTAssertEqual(event4.maxConflictCount, 3)
+    }
+    
+    func testConflictEventsDepth1() throws {
+        event1.conflictEvents = [event2, event3]
+        event2.conflictEvents = [event1, event3]
+        event3.conflictEvents = [event1, event2, event4]
+        event4.conflictEvents = [event3]
+        
+        XCTAssertEqual(event1.sortedConflictEventsBy(), [event2, event3])
+//        XCTAssertEqual(event1.sortedConflictEventsBy(), [event2, event3, event4])
+//        XCTAssertEqual(event2.conflictEventsDepth1, [event1, event3, event4])
+//        XCTAssertEqual(event3.conflictEventsDepth1, [event1, event2, event4])
+//        XCTAssertEqual(event4.conflictEventsDepth1, [event1, event2, event3])
     }
     
     func testIsConflict() throws {

@@ -47,12 +47,15 @@ struct EventView: View {
                 .fontWeight(.semibold)
                 .font(.system(size: 8))
                 .padding(2)
-//                .frame(height: baseHeight * 4)
                 .frame(width: width, height: height)
                 .foregroundColor(Color(.darkGray))
                 .background(Color(.systemYellow))
                 .cornerRadius(4)
         }
+        .overlay(
+            RoundedRectangle(cornerRadius: 4)
+                .stroke(.black, lineWidth: 0.5)
+        )
     }
 }
 
