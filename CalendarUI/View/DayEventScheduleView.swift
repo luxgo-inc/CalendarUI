@@ -16,6 +16,13 @@ struct DayEventScheduleView: View {
         checkConflictEvent()
     }
     
+    // TODO: 時間がかぶった場合に、widthの変更による表示は複雑になるので、
+    // TODO: 完全にかぶった場合は、複数のイベント 他2件などの表示を行う
+    // TODO: 完全ではないが時間がかぶることがある場合は時間が先のイベントを重ねて表示する
+    
+    
+    
+    
     var body: some View {
             ZStack(alignment: .leading) {
         GeometryReader { geometry in
@@ -29,13 +36,14 @@ struct DayEventScheduleView: View {
                         EventView(event: event,
 //                                  width: geometry.size.width / CGFloat(event.conflictEvents.count+1),
 //                                  width: geometry.size.width / CGFloat(event.maxConflictCount+1),
-                                  width: geometry.size.width / CGFloat(event.maxConflictCount),
+//                                  width: geometry.size.width / CGFloat(event.maxConflictCount),
+                                  width: geometry.size.width,
                                   height: geometry.size.height / 24 * event.scheduledTime)
 //                            .offset(x: event.conflictPositionX == 1 ? 0 :
 //                                    geometry.size.width * 1 / CGFloat(event.conflictPositionX),
                     // TODO: x および widthをmaxConflictCountで調整する
-                        .offset(x: event.positionX(width: geometry.size.width),
-                                      y: event.positionY * geometry.size.height)
+//                        .offset(x: event.positionX(width: geometry.size.width),
+                        .offset(x: 0, y: event.positionY * geometry.size.height)
 //                                    y: event.title == "イベント1" ? 379.5 : 379.5)
                 
                 
@@ -59,7 +67,6 @@ struct DayEventScheduleView: View {
 //                    }
 //                    Text("base width: \(geometry.size.width), height: \(geometry.size.height)")
                 }
-                Text("base width: \(geometry.size.width), height: \(geometry.size.height)")
             }
         }
     }
@@ -96,9 +103,5 @@ struct DayEventScheduleView_Previews: PreviewProvider {
         let event4: Event = .init(title: "イベント4", startTime: event4StartTime, endTime: event4EndTime, allDay: false)
         
         return DayEventScheduleView(events: [event1, event2, event3, event4])
-//        return DayEventScheduleView(events: [event3, event4])
-//        return DayEventScheduleView(events: [event1, event2, event3])
-//        return DayEventScheduleView(events: [event1, event3])
-//        return DayEventScheduleView(events: [event1])
     }
 }

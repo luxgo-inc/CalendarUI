@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct Event: Equatable, Identifiable, Hashable {
-    var id: String {
+public struct Event: Equatable, Identifiable, Hashable {
+    public var id: String {
         title + "\(startTime.timeIntervalSince1970)" + "\(endTime.timeIntervalSince1970)"
     }
     
-    let title: String
-    let startTime: Date
-    let endTime: Date
-    let allDay: Bool
+    public let title: String
+    public let startTime: Date
+    public let endTime: Date
+    public let allDay: Bool
     
     var conflictEvents: [Event] = []
 }
