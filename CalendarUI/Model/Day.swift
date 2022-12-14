@@ -10,4 +10,5 @@ import Foundation
 struct Day: Hashable {
     let dd: String
     let dayOf: String
+    let events: [Event]
 }
