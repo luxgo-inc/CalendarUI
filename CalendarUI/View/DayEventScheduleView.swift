@@ -24,10 +24,10 @@ struct DayEventScheduleView: View {
                               width: geometry.size.width,
                               height: geometry.size.height / 24 * event.scheduledTime)
                     .offset(x: 0, y: event.positionY * geometry.size.height)
-                    .padding(.horizontal, 2)
                 }
             }
         }
+        .padding(.horizontal, 1.5)
     }
     
     private mutating func checkConflictEvent() {

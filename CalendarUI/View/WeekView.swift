@@ -21,14 +21,12 @@ struct WeekView: View {
                 // ForEach(["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]) {
                 Spacer()
                 ForEach(week.days, id: \.self) { day in
-                    VStack {
+                    VStack(spacing: 2) {
                         Text(day.dayOf)
-                            .font(.subheadline)
+                            .font(.caption)
                             .foregroundColor(Color(.white))
 
-                        Text(day.dd)
-                            .font(.subheadline)
-                            .foregroundColor(Color(.white))
+                        DateView(date: day.dd)
                     }
                     .foregroundColor(Color(.darkGray))
                 }

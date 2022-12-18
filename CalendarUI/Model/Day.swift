@@ -11,4 +11,6 @@ struct Day: Hashable {
     let dd: String
     let dayOf: String
     let events: [Event]
+    
+    var current: Bool = false
 }
