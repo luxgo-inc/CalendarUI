@@ -8,5 +8,6 @@
 import Foundation
 
 struct Month {
+    let target: Date
     let days: [Day]
 }

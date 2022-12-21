@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct DayView: View {
-    @State private var day: Day
-    @State private var events: [Event]
+    @State var day: Day = .makeEmpty()
+    @State var events: [Event] = []
 
     init(day: Day) {
         self.day = day
@@ -21,12 +21,8 @@ struct DayView: View {
             GridRow {
                 // TODO: 今日の曜日はハイライト
                 VStack {
-                    Text(day.dayOf)
-                        .font(.subheadline)
-                        .foregroundColor(Color(.white))
-                    Text(day.dd)
-                        .font(.subheadline)
-                        .foregroundColor(Color(.white))
+                    DayOfView(dayof: day.dayOf)
+                    DateView(date: day.dd)
                 }
                 Text("予定はありません")
                     .font(.subheadline)
@@ -79,6 +75,7 @@ struct DayView_Previews: PreviewProvider {
         let event4EndTime = calendar.date(from: DateComponents(year: 2022, month: 12, day: 10, hour: 21, minute: 0, second: 0))!
         let event4: Event = .init(title: "イベント4", startTime: event4StartTime, endTime: event4EndTime, allDay: false)
         
-        DayView(day: .init(dd: "12", dayOf: "水", events: [event1, event2, event3, event4]))
+//        DayView(day: .init(dd: "12", dayOf: "水", events: [event1, event2, event3, event4]))
+        DayView(day: .init(date: .now, events: [event1, event2, event3, event4]))
     }
 }

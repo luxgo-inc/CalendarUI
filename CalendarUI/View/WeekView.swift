@@ -22,10 +22,7 @@ struct WeekView: View {
                 Spacer()
                 ForEach(week.days, id: \.self) { day in
                     VStack(spacing: 2) {
-                        Text(day.dayOf)
-                            .font(.caption)
-                            .foregroundColor(Color(.white))
-
+                        DayOfView(dayof: day.dayOf)
                         DateView(date: day.dd)
                     }
                     .foregroundColor(Color(.darkGray))
@@ -78,13 +75,20 @@ struct WeekView_Previews: PreviewProvider {
         let event4: Event = .init(title: "イベント4", startTime: event4StartTime, endTime: event4EndTime, allDay: false)
         
         WeekView(week: .init(days: [
-            Day(dd: "5", dayOf: "日", events: [event1, event2, event3, event4]),
-            Day(dd: "6", dayOf: "月", events: [event1, event2, event3, event4]),
-            Day(dd: "7", dayOf: "火", events: [event1, event2, event3, event4]),
-            Day(dd: "8", dayOf: "水", events: [event1, event2, event3, event4]),
-            Day(dd: "9", dayOf: "木", events: [event1, event2, event3, event4]),
-            Day(dd: "10", dayOf: "金", events: [event1, event2, event3, event4]),
-            Day(dd: "11", dayOf: "土", events: [event1, event2, event3, event4])
+            Day(date: .now, events: [event1, event2, event3, event4]),
+            Day(date: .now, events: [event1, event2, event3, event4]),
+            Day(date: .now, events: [event1, event2, event3, event4]),
+            Day(date: .now, events: [event1, event2, event3, event4]),
+            Day(date: .now, events: [event1, event2, event3, event4]),
+            Day(date: .now, events: [event1, event2, event3, event4]),
+            Day(date: .now, events: [event1, event2, event3, event4])
+//            Day(dd: "5", dayOf: "日", events: [event1, event2, event3, event4]),
+//            Day(dd: "6", dayOf: "月", events: [event1, event2, event3, event4]),
+//            Day(dd: "7", dayOf: "火", events: [event1, event2, event3, event4]),
+//            Day(dd: "8", dayOf: "水", events: [event1, event2, event3, event4]),
+//            Day(dd: "9", dayOf: "木", events: [event1, event2, event3, event4]),
+//            Day(dd: "10", dayOf: "金", events: [event1, event2, event3, event4]),
+//            Day(dd: "11", dayOf: "土", events: [event1, event2, event3, event4])
         ]))
     }
 }

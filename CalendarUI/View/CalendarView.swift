@@ -19,18 +19,27 @@ public struct CalendarView: View {
 
     public var body: some View {
         switch(displayType) {
-        case .month: MonthView(viewModel: .init(month: [.init(dd: "12", dayOf: "水", events: events)]))
+//        case .month: MonthView(viewModel: .init(month: [.init(dd: "12", dayOf: "水", events: events)]))
+        case .month: MonthView(viewModel: .init(month: .init(target: .now, days: [.init(date: .now, events: events)])))
         case .week:
             WeekView(week: .init(days: [
-                Day(dd: "5", dayOf: "日", events: events),
-                Day(dd: "6", dayOf: "月", events: events),
-                Day(dd: "7", dayOf: "火", events: events),
-                Day(dd: "8", dayOf: "水", events: events),
-                Day(dd: "9", dayOf: "木", events: events),
-                Day(dd: "10", dayOf: "金", events: events),
-                Day(dd: "11", dayOf: "土", events: events)
+                Day(date: .now, events: events),
+                Day(date: .now, events: events),
+                Day(date: .now, events: events),
+                Day(date: .now, events: events),
+                Day(date: .now, events: events),
+                Day(date: .now, events: events),
+                Day(date: .now, events: events)
+//                Day(dd: "5", dayOf: "日", events: events),
+//                Day(dd: "6", dayOf: "月", events: events),
+//                Day(dd: "7", dayOf: "火", events: events),
+//                Day(dd: "8", dayOf: "水", events: events),
+//                Day(dd: "9", dayOf: "木", events: events),
+//                Day(dd: "10", dayOf: "金", events: events),
+//                Day(dd: "11", dayOf: "土", events: events)
             ]))
-        case .day: DayView(day: .init(dd: "12", dayOf: "水", events: events))
+//        case .day: DayView(day: .init(dd: "12", dayOf: "水", events: events))
+        case .day: DayView(day: .init(date: .now, events: events))
         }
     }
 }

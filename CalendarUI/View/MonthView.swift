@@ -21,25 +21,34 @@ struct MonthView: View {
                 // TODO: 今日の曜日はハイライト
                 // ForEach(["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]) {
                 ForEach(["日", "月", "火", "水", "木", "金", "土"], id: \.self) {
-                    Text($0)
-                        .font(.caption)
-                        .foregroundColor(Color(.white))
+                    DayOfView(dayof: $0)
                         .padding(.bottom, 4)
                 }
             }
+            
             GridRow {
                 // TODO: 現在の月の1日の曜日から逆算して空白を入れる
-                ForEach(0..<7) { _ in
+//                ForEach(0..<7) { _ in
+//                    VStack(spacing: 1.5) {
+//                        DateView(date: "1")
+//
+//                        Group {
+//                            ForEach(viewModel.month, id: \.self) { day in
+//                                ForEach(day.events, id: \.self) { event in
+//                                    EventView(event: event, width: .infinity, height: 20)
+//                                }
+//                            }
+//                        }
+//                    }
+//                    .frame(maxWidth: .infinity)
+//                    .padding(.top, 4)
+//                }
+                ForEach(viewModel.week1) { day in
                     VStack(spacing: 1.5) {
-                        Text("1")
-                            .font(.caption)
-                            .foregroundColor(Color(.white))
-                        Group {
-                            ForEach(viewModel.month, id: \.self) { day in
-                                ForEach(day.events, id: \.self) { event in
-                                    EventView(event: event, width: .infinity, height: 20)
-                                }
-                            }
+                        DateView(date: day.dd)
+                        
+                        ForEach(day.events, id: \.self) { event in
+                            EventView(event: event, width: .infinity, height: 20)
                         }
                     }
                     .frame(maxWidth: .infinity)
@@ -51,9 +60,7 @@ struct MonthView: View {
             GridRow {
                 ForEach(0..<7) { _ in
                     VStack {
-                        Text("8")
-                            .font(.caption)
-                            .foregroundColor(Color(.white))
+                        DateView(date: "8")
                         Spacer()
                     }
                     .frame(maxWidth: .infinity)
@@ -65,9 +72,7 @@ struct MonthView: View {
             GridRow {
                 ForEach(0..<7) { _ in
                     VStack {
-                        Text("10")
-                            .font(.caption)
-                            .foregroundColor(Color(.white))
+                        DateView(date: "10")
                         Spacer()
                     }
                     .frame(maxWidth: .infinity)
@@ -79,9 +84,7 @@ struct MonthView: View {
             GridRow {
                 ForEach(0..<7) { _ in
                     VStack {
-                        Text("17")
-                            .font(.caption)
-                            .foregroundColor(Color(.white))
+                        DateView(date: "18")
                         Spacer()
                     }
                     .frame(maxWidth: .infinity)
@@ -93,9 +96,7 @@ struct MonthView: View {
             GridRow {
                 ForEach(0..<7) { _ in
                     VStack {
-                        Text("23")
-                            .font(.caption)
-                            .foregroundColor(Color(.white))
+                        DateView(date: "23")
                         Spacer()
                     }
                     .frame(maxWidth: .infinity)
@@ -108,9 +109,7 @@ struct MonthView: View {
                 // TODO: 現在の月の末尾の曜日から逆算して空白を入れる
                 ForEach(0..<7) { _ in
                     VStack {
-                        Text("30")
-                            .font(.caption)
-                            .foregroundColor(Color(.white))
+                        DateView(date: "30")
                         Spacer()
                     }
                     .frame(maxWidth: .infinity)
@@ -147,8 +146,10 @@ struct MonthView_Previews: PreviewProvider {
         let event4EndTime = calendar.date(from: DateComponents(year: 2022, month: 12, day: 10, hour: 21, minute: 0, second: 0))!
         let event4: Event = .init(title: "イベント4", startTime: event4StartTime, endTime: event4EndTime, allDay: false)
         
-        let day1: Day = .init(dd: "12", dayOf: "水", events: [event1, event2, event3, event4])
+//        let day1: Day = .init(dd: "12", dayOf: "水", events: [event1, event2, event3, event4])
+        let day1: Day = .init(date: .now, events: [event1, event2, event3, event4])
         
-        MonthView(viewModel: .init(month: [day1]))
+//        MonthView(viewModel: .init(month: .init(target: "11", days: [day1])))
+        MonthView(viewModel: .init(month: .init(target: .now, days: [day1])))
     }
 }
