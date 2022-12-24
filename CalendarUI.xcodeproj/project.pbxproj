@@ -24,6 +24,7 @@
 		244978282945B6D800DAC757 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244978272945B6D800DAC757 /* EventTests.swift */; };
 		2477B79C2952FF930086206E /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477B79B2952FF930086206E /* CalendarManager.swift */; };
 		2477B79E2953010C0086206E /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477B79D2953010C0086206E /* CalendarViewModel.swift */; };
+		2477B7A029572BF10086206E /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477B79F29572BF10086206E /* SettingHeaderView.swift */; };
 		24CC78F92949C88200871F2C /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CC78F82949C88200871F2C /* Month.swift */; };
 		24CC78FC2949ECB700871F2C /* MonthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CC78FB2949ECB700871F2C /* MonthViewModel.swift */; };
 		24CC78FE294F448000871F2C /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CC78FD294F448000871F2C /* DateView.swift */; };
@@ -87,6 +88,7 @@
 		244978272945B6D800DAC757 /* EventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTests.swift; sourceTree = "<group>"; };
 		2477B79B2952FF930086206E /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		2477B79D2953010C0086206E /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		2477B79F29572BF10086206E /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
 		24CC78F82949C88200871F2C /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		24CC78FB2949ECB700871F2C /* MonthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewModel.swift; sourceTree = "<group>"; };
 		24CC78FD294F448000871F2C /* DateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				496DD1A0293744F800198379 /* EventView.swift */,
 				2417773B2944B0790030B7DF /* DayEventScheduleView.swift */,
 				24CC78FD294F448000871F2C /* DateView.swift */,
+				2477B79F29572BF10086206E /* SettingHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				24CC78FC2949ECB700871F2C /* MonthViewModel.swift in Sources */,
 				2400490D292FB0E900A0C8D9 /* CalendarUI.docc in Sources */,
 				2400491B2931F30200A0C8D9 /* CalendarView.swift in Sources */,
+				2477B7A029572BF10086206E /* SettingHeaderView.swift in Sources */,
 				496DD1A1293744F800198379 /* EventView.swift in Sources */,
 				24CC78F92949C88200871F2C /* Month.swift in Sources */,
 				2477B79C2952FF930086206E /* CalendarManager.swift in Sources */,
