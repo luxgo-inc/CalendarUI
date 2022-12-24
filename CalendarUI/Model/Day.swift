@@ -22,13 +22,14 @@ struct Day: Hashable, Identifiable {
     let events: [Event]
 
     var current: Bool = false
+    private let weekdays = ["日", "月", "火", "水", "木", "金", "土"]
     
     init(date: Date?, events: [Event]) {
         self.date = date
         let calendar = Calendar(identifier: .gregorian)
         if let date {
             self.dd = String(calendar.component(.day, from: date))
-            self.dayOf = String(calendar.component(.weekday, from: date))
+            self.dayOf = weekdays[calendar.component(.weekday, from: date)-1]
         } else {
             self.dd = ""
             self.dayOf = ""

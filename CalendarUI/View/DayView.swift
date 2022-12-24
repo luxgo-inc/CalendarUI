@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct DayView: View {
-    @State var day: Day = .makeEmpty()
-    @State var events: [Event] = []
+    @State private var day: Day = .makeEmpty()
+    @State private var events: [Event] = []
 
     init(day: Day) {
         self.day = day

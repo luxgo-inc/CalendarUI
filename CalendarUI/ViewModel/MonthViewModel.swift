@@ -37,19 +37,19 @@ class MonthViewModel: ObservableObject {
         let endWeekday = calendar.component(.weekday, from: month.target.endOfMonth())
     
         // 第1週目の空白日付をセット
-        for _ in 0 ..< 7 - firstWeekday {
+        for _ in 0 ..< firstWeekday - 1 {
             week1.append(.makeEmpty())
         }
        
         // TODO: セットday event
-        for day in startOfMonth ..< endOfMonth {
+        for day in startOfMonth ... endOfMonth {
             if week1.count != 7 {
                 week1.append(.init(date: calendar.date(from: DateComponents(year: targetYear, month: targetMonth, day: day)), events: []))
                 continue
             }
             
             if week2.count != 7 {
-                week2.append(.init(date: calendar.date(from: DateComponents(year: targetYear, month: targetMonth, day: day)), events: []))
+                week2.append(.init(date: calendar.date(from: DateComponents(year: targetYear, month: targetMonth, day: day)), events: month.days.first!.events))
                 continue
             }
             

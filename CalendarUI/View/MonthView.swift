@@ -26,99 +26,38 @@ struct MonthView: View {
                 }
             }
             
+            weekdayRow(days: viewModel.week1)
+            weekdayRow(days: viewModel.week2)
+            weekdayRow(days: viewModel.week3)
+            weekdayRow(days: viewModel.week4)
+            weekdayRow(days: viewModel.week5)
+            if !viewModel.week6.isEmpty {
+                weekdayRow(days: viewModel.week6)
+            }
+        }
+        .background(Color(.gray))
+    }
+    
+    private func weekdayRow(days: [Day]) -> some View {
             GridRow {
-                // TODO: 現在の月の1日の曜日から逆算して空白を入れる
-//                ForEach(0..<7) { _ in
-//                    VStack(spacing: 1.5) {
-//                        DateView(date: "1")
-//
-//                        Group {
-//                            ForEach(viewModel.month, id: \.self) { day in
-//                                ForEach(day.events, id: \.self) { event in
-//                                    EventView(event: event, width: .infinity, height: 20)
-//                                }
-//                            }
-//                        }
-//                    }
-//                    .frame(maxWidth: .infinity)
-//                    .padding(.top, 4)
-//                }
-                ForEach(viewModel.week1) { day in
+                ForEach(days) { day in
                     VStack(spacing: 1.5) {
                         DateView(date: day.dd)
                         
-                        ForEach(day.events, id: \.self) { event in
-                            EventView(event: event, width: .infinity, height: 20)
+                        if day.events.isEmpty {
+                            Spacer()
+                        } else {
+                            ForEach(day.events, id: \.self) { event in
+                                EventView(event: event, width: .infinity, height: 20)
+                            }
                         }
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.top, 4)
+                    .padding(.bottom, 1)
                 }
             }
             .background(Color(.darkGray))
-
-            GridRow {
-                ForEach(0..<7) { _ in
-                    VStack {
-                        DateView(date: "8")
-                        Spacer()
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.top, 4)
-                }
-            }
-            .background(Color(.darkGray))
-
-            GridRow {
-                ForEach(0..<7) { _ in
-                    VStack {
-                        DateView(date: "10")
-                        Spacer()
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.top, 4)
-                }
-            }
-            .background(Color(.darkGray))
-
-            GridRow {
-                ForEach(0..<7) { _ in
-                    VStack {
-                        DateView(date: "18")
-                        Spacer()
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.top, 4)
-                }
-            }
-            .background(Color(.darkGray))
-
-            GridRow {
-                ForEach(0..<7) { _ in
-                    VStack {
-                        DateView(date: "23")
-                        Spacer()
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.top, 4)
-                }
-            }
-            .background(Color(.darkGray))
-
-            GridRow {
-                // TODO: 現在の月の末尾の曜日から逆算して空白を入れる
-                ForEach(0..<7) { _ in
-                    VStack {
-                        DateView(date: "30")
-                        Spacer()
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.top, 4)
-                }
-            }
-            .background(Color(.darkGray))
-        }
-        .background(Color(.gray))
     }
 }
 
