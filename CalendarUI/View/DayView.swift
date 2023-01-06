@@ -17,35 +17,39 @@ struct DayView: View {
     }
 
     var body: some View {
-        Grid(alignment: .center, horizontalSpacing: 1, verticalSpacing: 1) {
-            GridRow {
-                // TODO: 今日の曜日はハイライト
-                VStack {
-                    DayOfView(dayof: day.dayOf)
-                    DateView(date: day.dd)
-                }
-                Text("予定はありません")
-                    .font(.subheadline)
-                    .foregroundColor(Color(.white))
-
-            }
-            .background(Color(.gray))
-
-            GridRow {
-                ScheduleTimeView()
-                ZStack(alignment: .topLeading) {
-                    VStack(alignment: .center, spacing: 1) {
-                        ForEach(1..<24) { _ in
-                            Rectangle()
-                                .foregroundColor(Color(.darkGray))
-                        }
+        VStack(alignment: .leading) {
+            SettingHeaderView(baseDate: .now)
+                .padding(.leading, 16)
+            Grid(alignment: .center, horizontalSpacing: 1, verticalSpacing: 1) {
+                GridRow {
+                    // TODO: 今日の曜日はハイライト
+                    VStack {
+                        DayOfView(dayof: day.dayOf)
+                        DateView(date: day.dd)
                     }
-                    
-                    DayEventScheduleView(events: events)
+                    Text("予定はありません")
+                        .font(.subheadline)
+                        .foregroundColor(Color(.white))
+
                 }
-                .ignoresSafeArea(edges: [.bottom])
+                .background(Color(.gray))
+
+                GridRow {
+                    ScheduleTimeView()
+                    ZStack(alignment: .topLeading) {
+                        VStack(alignment: .center, spacing: 1) {
+                            ForEach(1..<24) { _ in
+                                Rectangle()
+                                    .foregroundColor(Color(.darkGray))
+                            }
+                        }
+                        
+                        DayEventScheduleView(events: events)
+                    }
+                    .ignoresSafeArea(edges: [.bottom])
+                }
+                .background(Color(.gray))
             }
-            .background(Color(.gray))
         }
         .background(Color(.gray))
     }

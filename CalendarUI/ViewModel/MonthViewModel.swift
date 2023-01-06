@@ -75,8 +75,15 @@ class MonthViewModel: ObservableObject {
         }
         
         // 最終週の空白日付をセット
-        for _ in 0 ..< 7 - endWeekday {
-            week6.append(.makeEmpty())
+        // 5週目が7日分埋まってなかったら、6週目は空にして5週目を埋める
+        if week5.count != 7 {
+            for _ in 0 ..< 7 - endWeekday {
+                week5.append(.makeEmpty())
+            }
+        } else {
+            for _ in 0 ..< 7 - endWeekday {
+                week6.append(.makeEmpty())
+            }
         }
     }
 }

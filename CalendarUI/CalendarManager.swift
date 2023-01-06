@@ -14,7 +14,9 @@ public protocol CalendarManagerProtocol {
 // TODO: 表示する対象の日付と、Eventsデータ(Dayでもらうようにする)は外から渡せるように
 public class CalendarManager: CalendarManagerProtocol {
     public static var shared = CalendarManager()
+    public var displayType: DisplayType
     
     private init() {
+        self.displayType = .week
     }
 }

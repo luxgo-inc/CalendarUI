@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingHeaderView: View {
     @State var month: String
+    private let manager = CalendarManager.shared
     
     init(baseDate: Date) {
         let calendar = Calendar(identifier: .gregorian)
@@ -19,22 +20,19 @@ struct SettingHeaderView: View {
         HStack(spacing: 12) {
             Menu {
                 Button {
-                    // TODO: Change display type
-                    print("日表示")
+                    manager.displayType = .day
                 } label: {
                     Text("日表示")
                 }
                 
                 Button {
-                    // TODO: Change display type
-                    print("日表示")
+                    manager.displayType = .week
                 } label: {
                     Text("週表示")
                 }
                 
                 Button {
-                    // TODO: Change display type
-                    print("日表示")
+                    manager.displayType = .month
                 } label: {
                     Text("月表示")
                 }
