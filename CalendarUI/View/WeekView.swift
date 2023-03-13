@@ -11,7 +11,7 @@ struct WeekView: View {
     @State private var week: Week
 
     init(week: Week) {
-        self.week = week
+        _week = State(initialValue: week)
     }
 
     var body: some View {
@@ -21,8 +21,6 @@ struct WeekView: View {
             
             Grid(alignment: .center, horizontalSpacing: 1, verticalSpacing: 1) {
                 GridRow {
-                    // TODO: 今日の曜日はハイライト
-                    // ForEach(["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]) {
                     Spacer()
                     ForEach(week.days, id: \.self) { day in
                         VStack(spacing: 2) {
@@ -79,21 +77,14 @@ struct WeekView_Previews: PreviewProvider {
         let event4EndTime = calendar.date(from: DateComponents(year: 2022, month: 12, day: 10, hour: 21, minute: 0, second: 0))!
         let event4: Event = .init(title: "イベント4", startTime: event4StartTime, endTime: event4EndTime, allDay: false)
         
-        WeekView(week: .init(days: [
+        return WeekView(week: .init(days: [
             Day(date: .now, events: [event1, event2, event3, event4]),
-            Day(date: .now, events: [event1, event2, event3, event4]),
-            Day(date: .now, events: [event1, event2, event3, event4]),
-            Day(date: .now, events: [event1, event2, event3, event4]),
-            Day(date: .now, events: [event1, event2, event3, event4]),
-            Day(date: .now, events: [event1, event2, event3, event4]),
-            Day(date: .now, events: [event1, event2, event3, event4])
-//            Day(dd: "5", dayOf: "日", events: [event1, event2, event3, event4]),
-//            Day(dd: "6", dayOf: "月", events: [event1, event2, event3, event4]),
-//            Day(dd: "7", dayOf: "火", events: [event1, event2, event3, event4]),
-//            Day(dd: "8", dayOf: "水", events: [event1, event2, event3, event4]),
-//            Day(dd: "9", dayOf: "木", events: [event1, event2, event3, event4]),
-//            Day(dd: "10", dayOf: "金", events: [event1, event2, event3, event4]),
-//            Day(dd: "11", dayOf: "土", events: [event1, event2, event3, event4])
+            Day(date: calendar.date(byAdding: DateComponents(day: 1), to: .now), events: [event1, event2, event3, event4]),
+            Day(date: calendar.date(byAdding: DateComponents(day: 2), to: .now), events: [event1, event2, event3, event4]),
+            Day(date: calendar.date(byAdding: DateComponents(day: 3), to: .now), events: [event1, event2, event3, event4]),
+            Day(date: calendar.date(byAdding: DateComponents(day: 4), to: .now), events: [event1, event2, event3, event4]),
+            Day(date: calendar.date(byAdding: DateComponents(day: 5), to: .now), events: [event1, event2, event3, event4]),
+            Day(date: calendar.date(byAdding: DateComponents(day: 6), to: .now), events: [event1, event2, event3, event4])
         ]))
     }
 }

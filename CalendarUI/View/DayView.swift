@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct DayView: View {
-    @State private var day: Day = .makeEmpty()
-    @State private var events: [Event] = []
+    @State private var day: Day
 
     init(day: Day) {
-        self.day = day
-        self.events = day.events
+        _day = State(initialValue: day)
     }
 
     var body: some View {
@@ -22,8 +20,7 @@ struct DayView: View {
                 .padding(.leading, 16)
             Grid(alignment: .center, horizontalSpacing: 1, verticalSpacing: 1) {
                 GridRow {
-                    // TODO: 今日の曜日はハイライト
-                    VStack {
+                    VStack(spacing: 2) {
                         DayOfView(dayof: day.dayOf)
                         DateView(date: day.dd)
                     }
@@ -44,7 +41,7 @@ struct DayView: View {
                             }
                         }
                         
-                        DayEventScheduleView(events: events)
+                        DayEventScheduleView(events: day.events)
                     }
                     .ignoresSafeArea(edges: [.bottom])
                 }
