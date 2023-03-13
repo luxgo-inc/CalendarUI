@@ -14,12 +14,9 @@ struct MonthView: View {
         self.viewModel = viewModel
     }
    
-    // TODO: GridRowは常に6行、7列
     var body: some View {
         Grid(alignment: .center, horizontalSpacing: 1, verticalSpacing: 1) {
             GridRow {
-                // TODO: 今日の曜日はハイライト
-                // ForEach(["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]) {
                 ForEach(["日", "月", "火", "水", "木", "金", "土"], id: \.self) {
                     DayOfView(dayof: $0)
                         .padding(.bottom, 4)
@@ -85,10 +82,8 @@ struct MonthView_Previews: PreviewProvider {
         let event4EndTime = calendar.date(from: DateComponents(year: 2022, month: 12, day: 10, hour: 21, minute: 0, second: 0))!
         let event4: Event = .init(title: "イベント4", startTime: event4StartTime, endTime: event4EndTime, allDay: false)
         
-//        let day1: Day = .init(dd: "12", dayOf: "水", events: [event1, event2, event3, event4])
         let day1: Day = .init(date: .now, events: [event1, event2, event3, event4])
         
-//        MonthView(viewModel: .init(month: .init(target: "11", days: [day1])))
         MonthView(viewModel: .init(month: .init(target: .now, days: [day1])))
     }
 }
