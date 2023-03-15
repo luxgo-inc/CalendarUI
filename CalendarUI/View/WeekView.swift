@@ -15,41 +15,35 @@ struct WeekView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading) {
-            SettingHeaderView(baseDate: .now)
-                .padding(.leading, 16)
-            
-            Grid(alignment: .center, horizontalSpacing: 1, verticalSpacing: 1) {
-                GridRow {
-                    Spacer()
-                    ForEach(week.days, id: \.self) { day in
-                        VStack(spacing: 2) {
-                            DayOfView(dayof: day.dayOf)
-                            DateView(date: day.dd)
-                        }
-                        .foregroundColor(Color(.darkGray))
+        Grid(alignment: .center, horizontalSpacing: 1, verticalSpacing: 1) {
+            GridRow {
+                Spacer()
+                ForEach(week.days, id: \.self) { day in
+                    VStack(spacing: 2) {
+                        DayOfView(dayof: day.dayOf)
+                        DateView(date: day.dd)
                     }
+                    .foregroundColor(Color(.darkGray))
                 }
-
-                GridRow {
-                    ScheduleTimeView()
-                    ForEach(week.days, id: \.self) { day in
-                        ZStack(alignment: .topLeading) {
-                            VStack(alignment: .center, spacing: 1) {
-                                ForEach(0..<24) { _ in
-                                    Rectangle()
-                                        .foregroundColor(Color(.darkGray))
-                                }
-                            }
-                            
-                            DayEventScheduleView(events: day.events)
-                        } }
-                    .ignoresSafeArea(edges: [.bottom])
-                }
-                .background(Color(.gray))
             }
+
+            GridRow {
+                ScheduleTimeView()
+                ForEach(week.days, id: \.self) { day in
+                    ZStack(alignment: .topLeading) {
+                        VStack(alignment: .center, spacing: 1) {
+                            ForEach(0..<24) { _ in
+                                Rectangle()
+                                    .foregroundColor(Color(.darkGray))
+                            }
+                        }
+                        
+                        DayEventScheduleView(events: day.events)
+                    } }
+                .ignoresSafeArea(edges: [.bottom])
+            }
+            .background(Color(.gray))
         }
-        .background(Color(.gray))
     }
 }
 

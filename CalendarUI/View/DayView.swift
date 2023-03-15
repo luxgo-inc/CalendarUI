@@ -15,9 +15,6 @@ struct DayView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading) {
-            SettingHeaderView(baseDate: .now)
-                .padding(.leading, 16)
             Grid(alignment: .center, horizontalSpacing: 1, verticalSpacing: 1) {
                 GridRow {
                     VStack(spacing: 2) {
@@ -47,8 +44,6 @@ struct DayView: View {
                 }
                 .background(Color(.gray))
             }
-        }
-        .background(Color(.gray))
     }
 }
 

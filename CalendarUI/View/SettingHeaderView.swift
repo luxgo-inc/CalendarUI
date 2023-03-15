@@ -9,30 +9,31 @@ import SwiftUI
 
 struct SettingHeaderView: View {
     @State var month: String
-    private let manager = CalendarManager.shared
+    @Binding private var displayType: DisplayType
     
-    init(baseDate: Date) {
+    init(baseDate: Date, displayType: Binding<DisplayType>) {
         let calendar = Calendar(identifier: .gregorian)
         self.month = String(calendar.component(.month, from: baseDate))
+        _displayType = displayType
     }
     
     var body: some View {
         HStack(spacing: 12) {
             Menu {
                 Button {
-                    manager.displayType = .day
+                    displayType = .day
                 } label: {
                     Text("日表示")
                 }
                 
                 Button {
-                    manager.displayType = .week
+                    displayType = .week
                 } label: {
                     Text("週表示")
                 }
                 
                 Button {
-                    manager.displayType = .month
+                    displayType = .month
                 } label: {
                     Text("月表示")
                 }
@@ -48,7 +49,7 @@ struct SettingHeaderView: View {
 
 struct SettingHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingHeaderView(baseDate: .now)
+        SettingHeaderView(baseDate: .now, displayType: .constant(.month))
             .background(Color(.darkGray))
     }
 }

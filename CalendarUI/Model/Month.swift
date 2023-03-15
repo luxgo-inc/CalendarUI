@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct Month {
+public struct Month {
     let target: Date
     let days: [Day]
+    
+    public init(target: Date, days: [Day]) {
+        self.target = target
+        self.days = days
+    }
 }

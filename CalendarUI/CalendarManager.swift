@@ -6,17 +6,19 @@
 //
 
 import Foundation
-
-public protocol CalendarManagerProtocol {
-}
+import SwiftUI
 
 // TODO: 外部からのデータを受け取るinterface
-// TODO: 表示する対象の日付と、Eventsデータ(Dayでもらうようにする)は外から渡せるように
-public class CalendarManager: CalendarManagerProtocol {
-    public static var shared = CalendarManager()
-    public var displayType: DisplayType
+public class CalendarManager: ObservableObject {
+    @Published var events: [Event]
+    @Published var displayType: DisplayType
     
-    private init() {
-        self.displayType = .week
+    public init(type: DisplayType, events: [Event]) {
+        self.displayType = type
+        self.events = events
+    }
+    
+    func changeDisplayType(type: DisplayType) {
+        displayType = type
     }
 }

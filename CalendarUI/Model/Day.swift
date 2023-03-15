@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Day: Hashable, Identifiable {
-    var id: String {
+public struct Day: Hashable, Identifiable {
+    public var id: String {
         if let date {
             return dd + dayOf + "\(date.timeIntervalSince1970)"
         } else {
@@ -24,7 +24,7 @@ struct Day: Hashable, Identifiable {
     var current: Bool = false
     private let weekdays = ["日", "月", "火", "水", "木", "金", "土"]
     
-    init(date: Date?, events: [Event]) {
+    public init(date: Date?, events: [Event]) {
         self.date = date
         let calendar = Calendar(identifier: .gregorian)
         if let date {

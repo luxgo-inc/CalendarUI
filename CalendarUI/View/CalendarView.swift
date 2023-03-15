@@ -8,33 +8,36 @@
 import SwiftUI
 
 public struct CalendarView: View {
-    @State private var events: [Event]
+    @StateObject private var manager: CalendarManager
     
-    private let displayType: DisplayType
-
     // TODO: 対象の日付と、Eventsデータ(Dayでもらうようにする)は外から渡せるように
     public init(type: DisplayType, events: [Event]) {
-        self.displayType = type
-        self.events = events
+        _manager = StateObject(wrappedValue: .init(type: type, events: events))
     }
 
     // TODO: DisplayTypeの切り替えUI表示
     // TODO: 対象の月表示
     public var body: some View {
-        switch(displayType) {
-        case .month: MonthView(viewModel: .init(month: .init(target: .now, days: [.init(date: .now, events: events)])))
-        case .week:
-            WeekView(week: .init(days: [
-                Day(date: .now, events: events),
-                Day(date: .now, events: events),
-                Day(date: .now, events: events),
-                Day(date: .now, events: events),
-                Day(date: .now, events: events),
-                Day(date: .now, events: events),
-                Day(date: .now, events: events)
-            ]))
-        case .day: DayView(day: .init(date: .now, events: events))
+        
+        VStack(alignment: .leading) {
+            SettingHeaderView(baseDate: .now, displayType: $manager.displayType)
+                .padding(.leading, 16)
+            switch(manager.displayType) {
+            case .month: MonthView(viewModel: .init(month: .init(target: .now, days: [.init(date: .now, events: manager.events)])))
+            case .week:
+                WeekView(week: .init(days: [
+                    Day(date: .now, events: manager.events),
+                    Day(date: .now, events: manager.events),
+                    Day(date: .now, events: manager.events),
+                    Day(date: .now, events: manager.events),
+                    Day(date: .now, events: manager.events),
+                    Day(date: .now, events: manager.events),
+                    Day(date: .now, events: manager.events)
+                ]))
+            case .day: DayView(day: .init(date: .now, events: manager.events))
+            }
         }
+        .background(Color(.gray))
     }
 }
 
