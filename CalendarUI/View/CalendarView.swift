@@ -18,7 +18,6 @@ public struct CalendarView: View {
     // TODO: DisplayTypeの切り替えUI表示
     // TODO: 対象の月表示
     public var body: some View {
-        
         VStack(alignment: .leading) {
             SettingHeaderView(baseDate: .now, displayType: $manager.displayType)
                 .padding(.leading, 16)
