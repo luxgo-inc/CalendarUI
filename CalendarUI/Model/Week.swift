@@ -7,6 +7,10 @@
 
 import Foundation
 
-struct Week {
+public struct Week {
     let days: [Day]
+    
+    public init(days: [Day]) {
+        self.days = days
+    }
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CalendarUI
 
 @main
 struct SampleApp: App {
@@ -13,8 +14,19 @@ struct SampleApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            TabView {
+                ContentView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .tabItem {
+                        Label("Account", systemImage: "person.crop.circle.fill")
+                    }
+                
+                CalendarView(type: .month, events: [])
+                    .tabItem {
+                        Label("Calendar", systemImage: "person.crop.circle.fill")
+                    }
+            }
+            .tabViewStyle(.automatic)
         }
     }
 }

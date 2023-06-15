@@ -1,53 +1,43 @@
 //
-//  DayView.swift
+//  DayEventScheduleView.swift
 //  CalendarUI
 //
-//  Created by Keigo Nakagawa on 2022/11/30.
+//  Created by Keigo Nakagawa on 2022/12/10.
 //
 
 import SwiftUI
 
-struct DayView: View {
-    @State private var day: Day
-
-    init(day: Day) {
-        _day = State(initialValue: day)
+struct DayEventScheduleView: View {
+    var events: [Event]
+    
+    init(events: [Event]) {
+        self.events = events
+        
+        checkConflictEvent()
     }
-
+    
     var body: some View {
-            Grid(alignment: .center, horizontalSpacing: 1, verticalSpacing: 1) {
-                GridRow {
-                    VStack(spacing: 2) {
-                        DayOfView(dayof: day.dayOf)
-                        DateView(date: day.dd)
-                    }
-                    Text("予定はありません")
-                        .font(.subheadline)
-                        .foregroundColor(Color(.white))
-
+        ZStack(alignment: .leading) {
+            GeometryReader { geometry in
+                ForEach(events) { event in
+                    EventView(event: event,
+                              width: geometry.size.width,
+                              height: geometry.size.height / 24 * event.scheduledTime)
+                    .offset(x: 0, y: event.positionY * geometry.size.height)
                 }
-                .background(Color(.gray))
-
-                GridRow {
-                    ScheduleTimeView()
-                    ZStack(alignment: .topLeading) {
-                        VStack(alignment: .center, spacing: 1) {
-                            ForEach(1..<24) { _ in
-                                Rectangle()
-                                    .foregroundColor(Color(.darkGray))
-                            }
-                        }
-                        
-                        DayEventScheduleView(events: day.events)
-                    }
-                    .ignoresSafeArea(edges: [.bottom])
-                }
-                .background(Color(.gray))
             }
+        }
+        .padding(.horizontal, 1.5)
+    }
+    
+    private mutating func checkConflictEvent() {
+        for (idx, event) in events.enumerated() {
+            self.events[idx].conflictEvents = events.filter { $0 != event && event.isConflict(targetEvent: $0) }
+        }
     }
 }
 
-struct DayView_Previews: PreviewProvider {
+struct DayEventScheduleView_Previews: PreviewProvider {
     static var previews: some View {
         let calendar = Calendar(identifier: .gregorian)
         
@@ -70,8 +60,6 @@ struct DayView_Previews: PreviewProvider {
         let event4StartTime = calendar.date(from: DateComponents(year: 2022, month: 12, day: 10, hour: 19, minute: 30, second: 0))!
         let event4EndTime = calendar.date(from: DateComponents(year: 2022, month: 12, day: 10, hour: 21, minute: 0, second: 0))!
         let event4: Event = .init(title: "イベント4", startTime: event4StartTime, endTime: event4EndTime, allDay: false)
-        
-//        DayView(day: .init(dd: "12", dayOf: "水", events: [event1, event2, event3, event4]))
-        DayView(day: .init(date: .now, events: [event1, event2, event3, event4]))
+        return DayEventScheduleView(events: [event1, event2, event3, event4])
     }
 }
