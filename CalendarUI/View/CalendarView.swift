@@ -16,7 +16,9 @@ public struct CalendarView: View {
 
     public var body: some View {
         switch(displayType) {
-        case .month: MonthView()
+        case .month:
+            MonthView()
+                .frame(width: .infinity)
         case .week:
             WeekView(week: .init(days: [
                 Day(dd: "5", dayOf: "日"),
