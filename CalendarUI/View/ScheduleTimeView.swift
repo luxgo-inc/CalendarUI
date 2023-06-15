@@ -29,6 +29,8 @@ struct ScheduleTimeView: View {
 
 struct ScheduleTimeView_Previews: PreviewProvider {
     static var previews: some View {
-        ScheduleTimeView()
+        Group {
+            ScheduleTimeView()
+        }
     }
 }
